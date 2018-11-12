@@ -21,6 +21,12 @@ namespace Budget.InputModels
         /// </summary>
         public Guid? EntryId { get; set; }
 
+        [UiOrder]
+        [UiSearch]
+        [ValueProvider(typeof(Budget.Services.CategoryValueProvider))]
+        [NullValueLabel("Any")]
+        public Guid? CategoryId { get; set; }
+
 
         /// <summary>
         /// Populate an IQueryable for entries. Does not apply the skip or limit. Will return
@@ -38,6 +44,11 @@ namespace Budget.InputModels
             }
             else
             {
+                if (CategoryId != null)
+                {
+                    query = query.Where(i => i.CategoryId == CategoryId);
+                }
+
                 return true;
             }
         }

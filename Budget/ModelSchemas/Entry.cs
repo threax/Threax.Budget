@@ -20,6 +20,7 @@ namespace Budget.ModelSchemas
 
         [Required(ErrorMessage = "You must include a category.")]
         [DefineValueProvider(typeof(CategoryValueProvider))]
+        [Queryable]
         public Guid CategoryId { get; set; }
     }
 }

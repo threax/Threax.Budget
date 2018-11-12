@@ -27,6 +27,8 @@ namespace Budget.Models
     public partial interface IEntryQuery
     {
         Guid? EntryId { get; set; }
+        Guid? CategoryId { get; set; }
+
 
     }
 }
