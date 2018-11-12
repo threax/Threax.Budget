@@ -24,7 +24,7 @@ namespace Budget.InputModels
         {
             if(CreateGenerated(ref query))
             {
-                //Customize query further
+                query = query.OrderByDescending(i => i.Created);
             }
 
             return Task.FromResult(query);

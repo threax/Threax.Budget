@@ -22,11 +22,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    @* if (User.IsInRole(Roles.EditValues))
-                        {*@
-                    <li><a asp-area="" asp-controller="Home" asp-action="Values">Values</a></li>
-                    @*}*@
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Entries</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Categories">Categories</a></li>
                     @if (User.IsInRole(Threax.AspNetCore.UserBuilder.Entities.AuthorizationAdminRoles.EditRoles))
                     {
                         <li><a asp-area="" asp-controller="Admin" asp-action="Users">Edit Users</a></li>
