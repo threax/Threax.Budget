@@ -5,6 +5,7 @@ using Budget.InputModels;
 using Budget.ViewModels;
 using Budget.Models;
 using Threax.AspNetCore.Halcyon.Ext;
+using Threax.AspNetCore.Halcyon.Ext.ValueProviders;
 
 namespace Budget.Repository
 {
@@ -17,5 +18,6 @@ namespace Budget.Repository
         Task<bool> HasCategorys();
         Task<CategoryCollection> List(CategoryQuery query);
         Task<Category> Update(Guid categoryId, CategoryInput value);
+        Task<IEnumerable<ILabelValuePair>> GetLabels();
     }
 }

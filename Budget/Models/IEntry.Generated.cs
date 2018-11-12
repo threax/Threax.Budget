@@ -15,6 +15,8 @@ namespace Budget.Models
 
         decimal Total { get; set; }
 
+        Guid CategoryId { get; set; }
+
     }
 
     public partial interface IEntryId

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Threax.AspNetCore.Halcyon.Ext;
+using Threax.AspNetCore.Halcyon.Ext.ValueProviders;
 
 namespace Budget.Repository
 {
@@ -82,6 +83,11 @@ namespace Budget.Repository
             var entities = categorys.Select(i => mapper.MapCategory(i, new CategoryEntity()));
             this.dbContext.Categorys.AddRange(entities);
             await SaveChanges();
+        }
+
+        public async Task<IEnumerable<ILabelValuePair>> GetLabels()
+        {
+            return await dbContext.Categorys.Select(i => new LabelValuePair<Guid>(i.Name, i.CategoryId)).ToListAsync();
         }
 
         protected virtual async Task SaveChanges()

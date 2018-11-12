@@ -20,6 +20,8 @@ namespace Budget.Database
 
         public decimal Total { get; set; }
 
+        public Guid CategoryId { get; set; }
+
         public DateTime Created { get; set; }
 
         public DateTime Modified { get; set; }

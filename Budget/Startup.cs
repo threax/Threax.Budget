@@ -1,6 +1,7 @@
 ﻿using Budget.Controllers;
 using Budget.Controllers.Api;
 using Budget.Database;
+using Budget.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -163,6 +164,8 @@ namespace Budget
                 o.AddStyle().AddSelf().AddUnsafeInline();
                 o.AddFrameAncestors().AddSelf();
             });
+
+            services.AddScoped<CategoryValueProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

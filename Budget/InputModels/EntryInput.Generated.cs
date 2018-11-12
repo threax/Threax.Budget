@@ -18,5 +18,8 @@ namespace Budget.InputModels
 
         public decimal Total { get; set; }
 
+        [ValueProvider(typeof(Budget.Services.CategoryValueProvider))]
+        public Guid CategoryId { get; set; }
+
     }
 }

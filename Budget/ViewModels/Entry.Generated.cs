@@ -21,6 +21,9 @@ namespace Budget.ViewModels
 
         public decimal Total { get; set; }
 
+        [ValueProvider(typeof(Budget.Services.CategoryValueProvider))]
+        public Guid CategoryId { get; set; }
+
         [UiOrder(0, 2147483646)]
         public DateTime Created { get; set; }
 
