@@ -73,23 +73,23 @@ namespace Budget.Repository
             }
         }
 
-        public virtual async Task<bool> HasCategorys()
+        public virtual async Task<bool> HasCategories()
         {
             return await Entities.CountAsync() > 0;
         }
 
-        public virtual async Task AddRange(IEnumerable<CategoryInput> categorys)
+        public virtual async Task AddRange(IEnumerable<CategoryInput> categories)
         {
-            var entities = categorys.Select(i => mapper.MapCategory(i, new CategoryEntity()));
-            this.dbContext.Categorys.AddRange(entities);
+            var entities = categories.Select(i => mapper.MapCategory(i, new CategoryEntity()));
+            this.dbContext.Categories.AddRange(entities);
             await SaveChanges();
         }
 
+
         public async Task<IEnumerable<ILabelValuePair>> GetLabels()
         {
-            return await dbContext.Categorys.Select(i => new LabelValuePair<Guid>(i.Name, i.CategoryId)).ToListAsync();
+            return await dbContext.Categories.Select(i => new LabelValuePair<Guid>(i.Name, i.CategoryId)).ToListAsync();
         }
-
         protected virtual async Task SaveChanges()
         {
             await this.dbContext.SaveChangesAsync();
@@ -99,7 +99,7 @@ namespace Budget.Repository
         {
             get
             {
-                return dbContext.Categorys;
+                return dbContext.Categories;
             }
         }
 

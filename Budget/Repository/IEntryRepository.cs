@@ -14,7 +14,7 @@ namespace Budget.Repository
         Task AddRange(IEnumerable<EntryInput> values);
         Task Delete(Guid id);
         Task<Entry> Get(Guid entryId);
-        Task<bool> HasEntrys();
+        Task<bool> HasEntries();
         Task<EntryCollection> List(EntryQuery query);
         Task<Entry> Update(Guid entryId, EntryInput value);
     }

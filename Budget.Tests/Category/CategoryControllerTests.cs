@@ -18,7 +18,7 @@ namespace Budget.Tests
 
             public Controller()
             {
-                mockup.Add<CategorysController>(m => new CategorysController(m.Get<ICategoryRepository>())
+                mockup.Add<CategoriesController>(m => new CategoriesController(m.Get<ICategoryRepository>())
                 {
                     ControllerContext = m.Get<ControllerContext>()
                 });
@@ -34,7 +34,7 @@ namespace Budget.Tests
             {
                 var totalItems = 3;
 
-                var controller = mockup.Get<CategorysController>();
+                var controller = mockup.Get<CategoriesController>();
 
                 for (var i = 0; i < totalItems; ++i)
                 {
@@ -54,7 +54,7 @@ namespace Budget.Tests
             {
                 var totalItems = 3;
 
-                var controller = mockup.Get<CategorysController>();
+                var controller = mockup.Get<CategoriesController>();
 
                 for (var i = 0; i < totalItems; ++i)
                 {
@@ -70,7 +70,7 @@ namespace Budget.Tests
             [Fact]
             async Task Add()
             {
-                var controller = mockup.Get<CategorysController>();
+                var controller = mockup.Get<CategoriesController>();
 
                 var result = await controller.Add(CategoryTests.CreateInput());
                 Assert.NotNull(result);
@@ -79,7 +79,7 @@ namespace Budget.Tests
             [Fact]
             async Task Update()
             {
-                var controller = mockup.Get<CategorysController>();
+                var controller = mockup.Get<CategoriesController>();
 
                 var result = await controller.Add(CategoryTests.CreateInput());
                 Assert.NotNull(result);
@@ -91,7 +91,7 @@ namespace Budget.Tests
             [Fact]
             async Task Delete()
             {
-                var controller = mockup.Get<CategorysController>();
+                var controller = mockup.Get<CategoriesController>();
 
                 var result = await controller.Add(CategoryTests.CreateInput());
                 Assert.NotNull(result);

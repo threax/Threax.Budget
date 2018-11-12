@@ -9,7 +9,7 @@ namespace Budget.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult Categorys()
+        public IActionResult Entries()
         {
             return View();
         }

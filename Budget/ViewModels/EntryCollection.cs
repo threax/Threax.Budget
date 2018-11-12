@@ -11,15 +11,15 @@ using Threax.AspNetCore.Halcyon.Ext;
 namespace Budget.ViewModels
 {
     [HalModel]
-    [HalSelfActionLink(typeof(EntrysController), nameof(EntrysController.List))]
-    [HalActionLink(typeof(EntrysController), nameof(EntrysController.Get), DocsOnly = true)] //This provides access to docs for showing items
-    [HalActionLink(typeof(EntrysController), nameof(EntrysController.List), DocsOnly = true)] //This provides docs for searching the list
-    [HalActionLink(typeof(EntrysController), nameof(EntrysController.Update), DocsOnly = true)] //This provides access to docs for updating items if the ui has different modes
-    [HalActionLink(typeof(EntrysController), nameof(EntrysController.Add))]
-    [DeclareHalLink(typeof(EntrysController), nameof(EntrysController.List), PagedCollectionView<Object>.Rels.Next, ResponseOnly = true)]
-    [DeclareHalLink(typeof(EntrysController), nameof(EntrysController.List), PagedCollectionView<Object>.Rels.Previous, ResponseOnly = true)]
-    [DeclareHalLink(typeof(EntrysController), nameof(EntrysController.List), PagedCollectionView<Object>.Rels.First, ResponseOnly = true)]
-    [DeclareHalLink(typeof(EntrysController), nameof(EntrysController.List), PagedCollectionView<Object>.Rels.Last, ResponseOnly = true)]
+    [HalSelfActionLink(typeof(EntriesController), nameof(EntriesController.List))]
+    [HalActionLink(typeof(EntriesController), nameof(EntriesController.Get), DocsOnly = true)] //This provides access to docs for showing items
+    [HalActionLink(typeof(EntriesController), nameof(EntriesController.List), DocsOnly = true)] //This provides docs for searching the list
+    [HalActionLink(typeof(EntriesController), nameof(EntriesController.Update), DocsOnly = true)] //This provides access to docs for updating items if the ui has different modes
+    [HalActionLink(typeof(EntriesController), nameof(EntriesController.Add))]
+    [DeclareHalLink(typeof(EntriesController), nameof(EntriesController.List), PagedCollectionView<Object>.Rels.Next, ResponseOnly = true)]
+    [DeclareHalLink(typeof(EntriesController), nameof(EntriesController.List), PagedCollectionView<Object>.Rels.Previous, ResponseOnly = true)]
+    [DeclareHalLink(typeof(EntriesController), nameof(EntriesController.List), PagedCollectionView<Object>.Rels.First, ResponseOnly = true)]
+    [DeclareHalLink(typeof(EntriesController), nameof(EntriesController.List), PagedCollectionView<Object>.Rels.Last, ResponseOnly = true)]
     public partial class EntryCollection
     {
         public EntryCollection(EntryQuery query, int total, IEnumerable<Entry> items) : base(query, total, items)

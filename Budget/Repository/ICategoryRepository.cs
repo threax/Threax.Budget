@@ -15,7 +15,7 @@ namespace Budget.Repository
         Task AddRange(IEnumerable<CategoryInput> values);
         Task Delete(Guid id);
         Task<Category> Get(Guid categoryId);
-        Task<bool> HasCategorys();
+        Task<bool> HasCategories();
         Task<CategoryCollection> List(CategoryQuery query);
         Task<Category> Update(Guid categoryId, CategoryInput value);
         Task<IEnumerable<ILabelValuePair>> GetLabels();

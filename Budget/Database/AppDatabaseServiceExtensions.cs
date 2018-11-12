@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Budget.InputModels;
-using Budget.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

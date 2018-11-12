@@ -4,8 +4,8 @@ using Budget.Controllers.Api;
 
 namespace Budget.ViewModels
 {
-    [HalActionLink(typeof(EntrysController), nameof(EntrysController.List), "ListEntrys")]
-    [HalActionLink(typeof(EntrysController), nameof(EntrysController.Add), "AddEntry")]
+    [HalActionLink(typeof(EntriesController), nameof(EntriesController.List), "ListEntries")]
+    [HalActionLink(typeof(EntriesController), nameof(EntriesController.Add), "AddEntry")]
     public partial class EntryPoint
     {
         

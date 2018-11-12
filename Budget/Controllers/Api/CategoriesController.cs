@@ -15,11 +15,11 @@ namespace Budget.Controllers.Api
     [Route("api/[controller]")]
     [ResponseCache(NoStore = true)]
     [Authorize(AuthenticationSchemes = AuthCoreSchemes.Bearer)]
-    public partial class CategorysController : Controller
+    public partial class CategoriesController : Controller
     {
         private ICategoryRepository repo;
 
-        public CategorysController(ICategoryRepository repo)
+        public CategoriesController(ICategoryRepository repo)
         {
             this.repo = repo;
         }

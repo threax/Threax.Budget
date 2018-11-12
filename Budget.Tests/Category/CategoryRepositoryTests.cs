@@ -48,9 +48,9 @@ namespace Budget.Tests
                 var repo = mockup.Get<ICategoryRepository>();
                 await repo.AddRange(new CategoryInput[] { CategoryTests.CreateInput(), CategoryTests.CreateInput(), CategoryTests.CreateInput() });
                 var result = await repo.Add(CategoryTests.CreateInput());
-                Assert.Equal<int>(4, dbContext.Categorys.Count());
+                Assert.Equal<int>(4, dbContext.Categories.Count());
                 await repo.Delete(result.CategoryId);
-                Assert.Equal<int>(3, dbContext.Categorys.Count());
+                Assert.Equal<int>(3, dbContext.Categories.Count());
             }
 
             [Fact]
@@ -60,24 +60,24 @@ namespace Budget.Tests
                 var repo = mockup.Get<ICategoryRepository>();
                 await repo.AddRange(new CategoryInput[] { CategoryTests.CreateInput(), CategoryTests.CreateInput(), CategoryTests.CreateInput() });
                 var result = await repo.Add(CategoryTests.CreateInput());
-                Assert.Equal<int>(4, dbContext.Categorys.Count());
+                Assert.Equal<int>(4, dbContext.Categories.Count());
                 var getResult = await repo.Get(result.CategoryId);
                 Assert.NotNull(getResult);
             }
 
             [Fact]
-            async Task HasCategorysEmpty()
+            async Task HasCategoriesEmpty()
             {
                 var repo = mockup.Get<ICategoryRepository>();
-                Assert.False(await repo.HasCategorys());
+                Assert.False(await repo.HasCategories());
             }
 
             [Fact]
-            async Task HasCategorys()
+            async Task HasCategories()
             {
                 var repo = mockup.Get<ICategoryRepository>();
                 await repo.AddRange(new CategoryInput[] { CategoryTests.CreateInput(), CategoryTests.CreateInput(), CategoryTests.CreateInput() });
-                Assert.True(await repo.HasCategorys());
+                Assert.True(await repo.HasCategories());
             }
 
             [Fact]

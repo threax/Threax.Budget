@@ -15,11 +15,11 @@ namespace Budget.Controllers.Api
     [Route("api/[controller]")]
     [ResponseCache(NoStore = true)]
     [Authorize(AuthenticationSchemes = AuthCoreSchemes.Bearer)]
-    public partial class EntrysController : Controller
+    public partial class EntriesController : Controller
     {
         private IEntryRepository repo;
 
-        public EntrysController(IEntryRepository repo)
+        public EntriesController(IEntryRepository repo)
         {
             this.repo = repo;
         }

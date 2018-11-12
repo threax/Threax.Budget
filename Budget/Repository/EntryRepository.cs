@@ -72,15 +72,15 @@ namespace Budget.Repository
             }
         }
 
-        public virtual async Task<bool> HasEntrys()
+        public virtual async Task<bool> HasEntries()
         {
             return await Entities.CountAsync() > 0;
         }
 
-        public virtual async Task AddRange(IEnumerable<EntryInput> entrys)
+        public virtual async Task AddRange(IEnumerable<EntryInput> entries)
         {
-            var entities = entrys.Select(i => mapper.MapEntry(i, new EntryEntity()));
-            this.dbContext.Entrys.AddRange(entities);
+            var entities = entries.Select(i => mapper.MapEntry(i, new EntryEntity()));
+            this.dbContext.Entries.AddRange(entities);
             await SaveChanges();
         }
 
@@ -93,7 +93,7 @@ namespace Budget.Repository
         {
             get
             {
-                return dbContext.Entrys;
+                return dbContext.Entries;
             }
         }
 

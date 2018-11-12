@@ -8,6 +8,7 @@ using Threax.AspNetCore.Models;
 
 namespace Budget.ModelSchemas
 {
+    [PluralName("Entries")]
     public class Entry
     {
         [Required(ErrorMessage = "You must include a description.")]

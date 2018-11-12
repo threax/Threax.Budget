@@ -18,7 +18,7 @@ namespace Budget.Tests
 
             public Controller()
             {
-                mockup.Add<EntrysController>(m => new EntrysController(m.Get<IEntryRepository>())
+                mockup.Add<EntriesController>(m => new EntriesController(m.Get<IEntryRepository>())
                 {
                     ControllerContext = m.Get<ControllerContext>()
                 });
@@ -34,7 +34,7 @@ namespace Budget.Tests
             {
                 var totalItems = 3;
 
-                var controller = mockup.Get<EntrysController>();
+                var controller = mockup.Get<EntriesController>();
 
                 for (var i = 0; i < totalItems; ++i)
                 {
@@ -54,7 +54,7 @@ namespace Budget.Tests
             {
                 var totalItems = 3;
 
-                var controller = mockup.Get<EntrysController>();
+                var controller = mockup.Get<EntriesController>();
 
                 for (var i = 0; i < totalItems; ++i)
                 {
@@ -70,7 +70,7 @@ namespace Budget.Tests
             [Fact]
             async Task Add()
             {
-                var controller = mockup.Get<EntrysController>();
+                var controller = mockup.Get<EntriesController>();
 
                 var result = await controller.Add(EntryTests.CreateInput());
                 Assert.NotNull(result);
@@ -79,7 +79,7 @@ namespace Budget.Tests
             [Fact]
             async Task Update()
             {
-                var controller = mockup.Get<EntrysController>();
+                var controller = mockup.Get<EntriesController>();
 
                 var result = await controller.Add(EntryTests.CreateInput());
                 Assert.NotNull(result);
@@ -91,7 +91,7 @@ namespace Budget.Tests
             [Fact]
             async Task Delete()
             {
-                var controller = mockup.Get<EntrysController>();
+                var controller = mockup.Get<EntriesController>();
 
                 var result = await controller.Add(EntryTests.CreateInput());
                 Assert.NotNull(result);

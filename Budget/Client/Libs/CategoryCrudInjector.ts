@@ -13,12 +13,12 @@ export class CategoryCrudInjector extends hyperCrud.AbstractHypermediaPageInject
 
     async list(query: any): Promise<hyperCrud.HypermediaCrudCollection> {
         var entry = await this.injector.load();
-        return entry.listCategorys(query);
+        return entry.listCategories(query);
     }
 
     async canList(): Promise<boolean> {
         var entry = await this.injector.load();
-        return entry.canListCategorys();
+        return entry.canListCategories();
     }
 
     public getDeletePrompt(item: client.CategoryResult): string {

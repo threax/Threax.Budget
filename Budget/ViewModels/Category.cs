@@ -12,9 +12,9 @@ using Budget.Controllers.Api;
 namespace Budget.ViewModels
 {
     [HalModel]
-    [HalSelfActionLink(typeof(CategorysController), nameof(CategorysController.Get))]
-    [HalActionLink(typeof(CategorysController), nameof(CategorysController.Update))]
-    [HalActionLink(typeof(CategorysController), nameof(CategorysController.Delete))]
+    [HalSelfActionLink(typeof(CategoriesController), nameof(CategoriesController.Get))]
+    [HalActionLink(typeof(CategoriesController), nameof(CategoriesController.Update))]
+    [HalActionLink(typeof(CategoriesController), nameof(CategoriesController.Delete))]
     public partial class Category
     {
         //You can add your own customizations here. These will not be overwritten by the model generator.

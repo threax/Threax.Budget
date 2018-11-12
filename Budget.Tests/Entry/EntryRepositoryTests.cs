@@ -48,9 +48,9 @@ namespace Budget.Tests
                 var repo = mockup.Get<IEntryRepository>();
                 await repo.AddRange(new EntryInput[] { EntryTests.CreateInput(), EntryTests.CreateInput(), EntryTests.CreateInput() });
                 var result = await repo.Add(EntryTests.CreateInput());
-                Assert.Equal<int>(4, dbContext.Entrys.Count());
+                Assert.Equal<int>(4, dbContext.Entries.Count());
                 await repo.Delete(result.EntryId);
-                Assert.Equal<int>(3, dbContext.Entrys.Count());
+                Assert.Equal<int>(3, dbContext.Entries.Count());
             }
 
             [Fact]
@@ -60,24 +60,24 @@ namespace Budget.Tests
                 var repo = mockup.Get<IEntryRepository>();
                 await repo.AddRange(new EntryInput[] { EntryTests.CreateInput(), EntryTests.CreateInput(), EntryTests.CreateInput() });
                 var result = await repo.Add(EntryTests.CreateInput());
-                Assert.Equal<int>(4, dbContext.Entrys.Count());
+                Assert.Equal<int>(4, dbContext.Entries.Count());
                 var getResult = await repo.Get(result.EntryId);
                 Assert.NotNull(getResult);
             }
 
             [Fact]
-            async Task HasEntrysEmpty()
+            async Task HasEntriesEmpty()
             {
                 var repo = mockup.Get<IEntryRepository>();
-                Assert.False(await repo.HasEntrys());
+                Assert.False(await repo.HasEntries());
             }
 
             [Fact]
-            async Task HasEntrys()
+            async Task HasEntries()
             {
                 var repo = mockup.Get<IEntryRepository>();
                 await repo.AddRange(new EntryInput[] { EntryTests.CreateInput(), EntryTests.CreateInput(), EntryTests.CreateInput() });
-                Assert.True(await repo.HasEntrys());
+                Assert.True(await repo.HasEntries());
             }
 
             [Fact]

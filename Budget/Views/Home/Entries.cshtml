@@ -1,9 +1,9 @@
 @{
-    ViewData["Title"] = "Entrys";
+    ViewData["Title"] = "Entries";
 }
 
 <div data-hr-controller="mainTable">
-    <h1>Entrys</h1>
+    <h1>Entries</h1>
     <load visible="true">
         <p>Working...</p>
     </load>
@@ -14,6 +14,7 @@
                     <tr>
                         <th>Description</th>
                         <th>Total</th>
+                        <th>CategoryId</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -24,6 +25,7 @@
                     <tr>
                         <td>{{description}}</td>
                         <td>{{total}}</td>
+                        <td>{{categoryId}}</td>
                         <td>
                             <button data-hr-on-click="edit" class="btn btn-default" data-hr-toggle="edit" data-hr-style-off="display:none;">Edit</button>
                             <button data-hr-on-click="del" class="btn btn-default" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
@@ -38,7 +40,7 @@
     </main>
 
     <error>
-        An error occured loading the entrys. Please try again later.
+        An error occured loading the entries. Please try again later.
     </error>
 </div>
 

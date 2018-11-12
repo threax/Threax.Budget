@@ -13,12 +13,12 @@ export class EntryCrudInjector extends hyperCrud.AbstractHypermediaPageInjector 
 
     async list(query: any): Promise<hyperCrud.HypermediaCrudCollection> {
         var entry = await this.injector.load();
-        return entry.listEntrys(query);
+        return entry.listEntries(query);
     }
 
     async canList(): Promise<boolean> {
         var entry = await this.injector.load();
-        return entry.canListEntrys();
+        return entry.canListEntries();
     }
 
     public getDeletePrompt(item: client.EntryResult): string {

@@ -4,6 +4,6 @@ namespace Budget.Database
 {
     public partial class AppDbContext
     {
-        public DbSet<EntryEntity> Entrys { get; set; }
+        public DbSet<EntryEntity> Entries { get; set; }
     }
 }

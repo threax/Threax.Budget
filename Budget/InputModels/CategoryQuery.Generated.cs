@@ -23,7 +23,7 @@ namespace Budget.InputModels
 
 
         /// <summary>
-        /// Populate an IQueryable for categorys. Does not apply the skip or limit. Will return
+        /// Populate an IQueryable for categories. Does not apply the skip or limit. Will return
         /// true if the query should be modified or false if the entire query was built and should
         /// be left alone.
         /// </summary>
