@@ -14,10 +14,14 @@ namespace Budget.InputModels
     [HalModel]
     public partial class EntryInput : IEntry
     {
+        [Required(ErrorMessage = "Description must have a value.")]
+        [MaxLength(1000, ErrorMessage = "Description must be less than 1000 characters.")]
         public String Description { get; set; }
 
+        [Required(ErrorMessage = "Total must have a value.")]
         public decimal Total { get; set; }
 
+        [Required(ErrorMessage = "Category Id must have a value.")]
         [ValueProvider(typeof(Budget.Services.CategoryValueProvider))]
         public Guid CategoryId { get; set; }
 

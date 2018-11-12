@@ -14,6 +14,8 @@ namespace Budget.InputModels
     [HalModel]
     public partial class CategoryInput : ICategory
     {
+        [Required(ErrorMessage = "Name must have a value.")]
+        [MaxLength(1000, ErrorMessage = "Name must be less than 1000 characters.")]
         public String Name { get; set; }
 
     }

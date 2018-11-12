@@ -16,6 +16,8 @@ namespace Budget.Database
         [Key]
         public Guid CategoryId { get; set; }
 
+        [Required(ErrorMessage = "Name must have a value.")]
+        [MaxLength(1000, ErrorMessage = "Name must be less than 1000 characters.")]
         public String Name { get; set; }
 
         public DateTime Created { get; set; }
