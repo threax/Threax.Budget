@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  budget:
+    image: budget
+    container_name: budget
+    build:
+      context: .
+      dockerfile: Budget/Dockerfile
+    networks:
+      - appnet
+    volumes:
+      - type: bind
+        source: ../TrustedRoots
+        target: /usr/local/share/ca-certificates
+      - type: bind
+        source: ../DevData/budget
+        target: /appdata
+
+networks:
+  appnet:
+    external: true
