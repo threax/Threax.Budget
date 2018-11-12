@@ -13,21 +13,27 @@
                 <thead>
                     <tr>
                         <th>Date</th>
+                        <th>CategoryId</th>
                         <th>Description</th>
                         <th>Total</th>
-                        <th>CategoryId</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody data-hr-view="listing" data-hr-view-component="mainTableBody"></tbody>
+                <tfoot data-hr-view="total">
+                    <tr>
+                        <th colspan="3">Total</th>
+                        <th colspan="2">${{amountTotal}}</th>
+                    </tr>
+                </tfoot>
             </table>
             <template data-hr-component="mainTableBody">
                 <table>
                     <tr>
                         <td>{{created}}</td>
+                        <td>{{categoryId}}</td>
                         <td>{{description}}</td>
                         <td>${{total}}</td>
-                        <td>{{categoryId}}</td>
                         <td>
                             <button data-hr-on-click="edit" class="btn btn-default" data-hr-toggle="edit" data-hr-style-off="display:none;">Edit</button>
                             <button data-hr-on-click="del" class="btn btn-default" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
