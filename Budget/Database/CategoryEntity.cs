@@ -13,5 +13,6 @@ namespace Budget.Database
     {
         //You can add your own customizations here. These will not be overwritten by the model generator.
         //See CategoryEntity.Generated for the generated code
+        public List<EntryEntity> Entries { get; set; }
     }
 }
