@@ -28,7 +28,8 @@ namespace Budget.Mappers
         public CategoryProfile()
         {
             //Map the input model to the entity
-            MapInputToEntity(CreateMap<CategoryInput, CategoryEntity>());
+            MapInputToEntity(CreateMap<CategoryInput, CategoryEntity>()
+                .ForMember(i => i.Entries, o => o.Ignore()));
 
             //Map the entity to the view model.
             MapEntityToView(CreateMap<CategoryEntity, Category>());
