@@ -1508,11 +1508,13 @@ export interface EntryInput {
 }
 
 export interface EntryCollection {
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
-    offset?: number;
+    amountTotal?: number;
+    categoryId?: string;
     /** Lookup a entry by id. */
     entryId?: string;
     total?: number;
+    /** The number of pages (item number = Offset * Limit) into the collection to query. */
+    offset?: number;
     /** The limit of the number of items to return. */
     limit?: number;
 }
@@ -1520,6 +1522,7 @@ export interface EntryCollection {
 export interface EntryQuery {
     /** Lookup a entry by id. */
     entryId?: string;
+    categoryId?: string;
     /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
     /** The limit of the number of items to return. */

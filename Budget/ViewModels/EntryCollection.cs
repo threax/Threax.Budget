@@ -22,10 +22,12 @@ namespace Budget.ViewModels
     [DeclareHalLink(typeof(EntriesController), nameof(EntriesController.List), PagedCollectionView<Object>.Rels.Last, ResponseOnly = true)]
     public partial class EntryCollection
     {
-        public EntryCollection(EntryQuery query, int total, IEnumerable<Entry> items) : base(query, total, items)
+        public EntryCollection(decimal amountTotal, EntryQuery query, int total, IEnumerable<Entry> items) : base(query, total, items)
         {
-            
+            this.AmountTotal = amountTotal;
         }
+
+        public decimal AmountTotal { get; private set; }
 
         //You can add your own customizations here. These will not be overwritten by the model generator.
         //See EntryCollection.Generated for the generated code

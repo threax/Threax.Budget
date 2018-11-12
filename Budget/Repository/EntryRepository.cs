@@ -30,10 +30,11 @@ namespace Budget.Repository
             var dbQuery = await query.Create(this.Entities);
 
             var total = await dbQuery.CountAsync();
+            var amountTotal = await dbQuery.SumAsync(i => i.Total);
             dbQuery = dbQuery.Skip(query.SkipTo(total)).Take(query.Limit);
             var results = await dbQuery.ToListAsync();
 
-            return new EntryCollection(query, total, results.Select(i => mapper.MapEntry(i, new Entry())));
+            return new EntryCollection(amountTotal, query, total, results.Select(i => mapper.MapEntry(i, new Entry())));
         }
 
         public async Task<Entry> Get(Guid entryId)
