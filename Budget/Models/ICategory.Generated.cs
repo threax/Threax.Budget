@@ -13,6 +13,8 @@ namespace Budget.Models
     {
         String Name { get; set; }
 
+        decimal Total { get; set; }
+
     }
 
     public partial interface ICategoryId

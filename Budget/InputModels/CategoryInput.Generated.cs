@@ -18,5 +18,7 @@ namespace Budget.InputModels
         [MaxLength(1000, ErrorMessage = "Name must be less than 1000 characters.")]
         public String Name { get; set; }
 
+        public decimal Total { get; set; }
+
     }
 }

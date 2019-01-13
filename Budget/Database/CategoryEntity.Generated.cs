@@ -20,6 +20,8 @@ namespace Budget.Database
         [MaxLength(1000, ErrorMessage = "Name must be less than 1000 characters.")]
         public String Name { get; set; }
 
+        public decimal Total { get; set; }
+
         public DateTime Created { get; set; }
 
         public DateTime Modified { get; set; }
