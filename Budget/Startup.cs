@@ -110,6 +110,12 @@ namespace Budget
                 DetailedErrors = appConfig.DetailedErrors
             });
 
+            services.AddThreaxIdServerClient(o =>
+            {
+                o.GetSharedClientCredentials = s => Configuration.Bind("SharedClientCredentials", s);
+                Configuration.Bind("IdServerClient", o);
+            });
+
             // Add framework services.
             services.AddMvc(o =>
             {
