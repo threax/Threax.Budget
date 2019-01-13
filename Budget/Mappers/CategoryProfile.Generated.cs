@@ -15,8 +15,8 @@ namespace Budget.Mappers
         partial void MapInputToEntity(IMappingExpression<CategoryInput, CategoryEntity> mapExpr)
         {
             mapExpr.ForMember(d => d.CategoryId, opt => opt.Ignore())
-                .ForMember(d => d.Created, opt => opt.ResolveUsing<ICreatedResolver>())
-                .ForMember(d => d.Modified, opt => opt.ResolveUsing<IModifiedResolver>());
+                .ForMember(d => d.Created, opt => opt.MapFrom<ICreatedResolver>())
+                .ForMember(d => d.Modified, opt => opt.MapFrom<IModifiedResolver>());
         }
 
         partial void MapEntityToView(IMappingExpression<CategoryEntity, Category> mapExpr)

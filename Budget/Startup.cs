@@ -5,6 +5,7 @@ using Budget.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -20,6 +21,7 @@ using Threax.AspNetCore.Halcyon.ClientGen;
 using Threax.AspNetCore.Halcyon.Ext;
 using Threax.AspNetCore.IdServerAuth;
 using Threax.AspNetCore.UserBuilder;
+using Threax.AspNetCore.UserLookup.Mvc.Controllers;
 using Threax.Extensions.Configuration.SchemaBinder;
 
 namespace Budget
@@ -73,7 +75,7 @@ namespace Budget
 
             services.AddHalClientGen(new HalClientGenOptions()
             {
-                SourceAssemblies = new Assembly[] { this.GetType().GetTypeInfo().Assembly, typeof(Spc.AspNetCore.Users.Mvc.Controllers.UserSearchController).Assembly },
+                SourceAssemblies = new Assembly[] { this.GetType().GetTypeInfo().Assembly, typeof(UserSearchController).Assembly },
                 CSharp = new CSharpOptions()
                 {
                     Namespace = "Budget.Client"
@@ -120,7 +122,11 @@ namespace Budget
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             })
             .AddConventionalIdServerMvc()
-            .AddUserSearchMvc();
+            .AddThreaxUserLookup(o =>
+            {
+                o.UseIdServer();
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.ConfigureHtmlRapierTagHelpers(o =>
             {
