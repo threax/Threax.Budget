@@ -30,7 +30,9 @@ namespace Budget.Repository
             var dbQuery = await query.Create(this.Entities);
 
             var total = await dbQuery.CountAsync();
-            var amountTotal = await dbQuery.SumAsync(i => i.Total);
+            var now = DateTime.Now;
+            var firstOfMonth = new DateTime(now.Year, now.Month, 1, 0, 0, 0);
+            var amountTotal = await dbQuery.Where(i => i.Created >= firstOfMonth).SumAsync(i => i.Total);
             dbQuery = dbQuery.Skip(query.SkipTo(total)).Take(query.Limit);
             var results = await dbQuery.ToListAsync();
 
