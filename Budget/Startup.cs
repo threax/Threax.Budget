@@ -126,7 +126,7 @@ namespace Budget
             {
                 o.UseIdServer();
             })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.ConfigureHtmlRapierTagHelpers(o =>
             {
@@ -171,6 +171,13 @@ namespace Budget
                 o.AddFrameAncestors().AddSelf();
             });
 
+            services.AddLogging(o =>
+            {
+                o.AddConfiguration(Configuration.GetSection("Logging"))
+                    .AddConsole()
+                    .AddDebug();
+            });
+
             services.AddScoped<CategoryValueProvider>();
         }
 
@@ -189,9 +196,6 @@ namespace Budget
             {
                 o.CorrectPathBase = appConfig.PathBase;
             });
-
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
 
             app.UseStaticFiles();
 
