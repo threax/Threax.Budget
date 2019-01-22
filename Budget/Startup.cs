@@ -137,7 +137,7 @@ namespace Budget
 
             services.ConfigureHtmlRapierTagHelpers(o =>
             {
-                o.FrontEndLibrary = HtmlRapier.TagHelpers.FrontEndLibrary.Bootstrap3;
+                o.FrontEndLibrary = HtmlRapier.TagHelpers.FrontEndLibrary.Bootstrap4;
             });
 
             services.AddScoped<IToolRunner>(s =>
@@ -168,7 +168,7 @@ namespace Budget
             services.AddThreaxCSP(o =>
             {
                 o.AddDefault().AddNone();
-                o.AddImg().AddSelf();
+                o.AddImg().AddSelf().AddData();
                 o.AddConnect().AddSelf();
                 o.AddManifest().AddSelf();
                 o.AddFont().AddSelf();

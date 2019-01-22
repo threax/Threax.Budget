@@ -25,6 +25,7 @@ namespace Budget.ViewModels
         public Guid CategoryId { get; set; }
 
         [UiOrder(0, 2147483646)]
+        [DateUiType]
         public DateTime Created { get; set; }
 
         [UiOrder(0, 2147483647)]
