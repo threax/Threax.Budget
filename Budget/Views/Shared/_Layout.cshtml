@@ -9,14 +9,14 @@
 </head>
 <body>
     <relogin></relogin>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-app">
+    <nav class="navbar navbar-expand-md navbar-dark bg-brand-app">
         <div class="container">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Budget</a>
+            @RenderSection("BeforeMenu", required: false)
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="navbarSupportedContent">
-                @RenderSection("BeforeMenu", required: false)
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Categories">Categories</a></li>
                     @if (User.IsInRole(Threax.AspNetCore.UserBuilder.Entities.AuthorizationAdminRoles.EditRoles))
