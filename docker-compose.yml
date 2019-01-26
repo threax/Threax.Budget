@@ -3,10 +3,9 @@ version: '3.4'
 services:
   budget:
     image: threax.budget
-    container_name: budget
     build:
-      context: .
-      dockerfile: Budget/Dockerfile
+      context: Budget
+      dockerfile: Dockerfile
     networks:
       - appnet
     volumes:
@@ -16,6 +15,8 @@ services:
       - type: bind
         source: ../DevData/budget
         target: /appdata
+    labels:
+      - "threax.nginx.host=budget.dev.threax.com"
 
 networks:
   appnet:
