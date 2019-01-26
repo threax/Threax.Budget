@@ -4,8 +4,8 @@ services:
   budget:
     image: threax.budget
     build:
-      context: Budget
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Budget/Dockerfile
     networks:
       - appnet
     volumes:
