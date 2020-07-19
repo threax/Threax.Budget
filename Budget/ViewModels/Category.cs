@@ -12,6 +12,7 @@ using Budget.Controllers.Api;
 namespace Budget.ViewModels
 {
     [HalModel]
+    [CacheEndpointDoc]
     [HalSelfActionLink(typeof(CategoriesController), nameof(CategoriesController.Get))]
     [HalActionLink(typeof(CategoriesController), nameof(CategoriesController.Update))]
     [HalActionLink(typeof(CategoriesController), nameof(CategoriesController.Delete))]

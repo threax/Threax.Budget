@@ -9,6 +9,7 @@ using Threax.AspNetCore.Models;
 
 namespace Budget.InputModels
 {
+    [CacheEndpointDoc]
     public partial class CategoryInput
     {
         //You can add your own customizations here. These will not be overwritten by the model generator.

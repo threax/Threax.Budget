@@ -11,6 +11,7 @@ using Threax.AspNetCore.Halcyon.Ext;
 namespace Budget.ViewModels
 {
     [HalModel]
+    [CacheEndpointDoc]
     [HalSelfActionLink(typeof(CategoriesController), nameof(CategoriesController.List))]
     [HalActionLink(typeof(CategoriesController), nameof(CategoriesController.Get), DocsOnly = true)] //This provides access to docs for showing items
     [HalActionLink(typeof(CategoriesController), nameof(CategoriesController.List), DocsOnly = true)] //This provides docs for searching the list
