@@ -1,4 +1,5 @@
 import * as hal from 'hr.halcyon.EndpointClient';
+import { Fetcher } from 'hr.fetcher';
 
 export class RoleAssignmentsResult {
     private client: hal.HalEndpointClient;
@@ -200,17 +201,17 @@ export class CategoryCollectionResult {
         return this.strongData;
     }
 
-    private strongItems: CategoryResult[];
+    private itemsStrong: CategoryResult[];
     public get items(): CategoryResult[] {
-        if (this.strongItems === undefined) {
+        if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
-            this.strongItems = [];
+            this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.strongItems.push(new CategoryResult(clients[i]));
+                this.itemsStrong.push(new CategoryResult(clients[i]));
             }
         }
-        return this.strongItems;
+        return this.itemsStrong;
     }
 
     public refresh(): Promise<CategoryCollectionResult> {
@@ -502,17 +503,17 @@ export class EntryCollectionResult {
         return this.strongData;
     }
 
-    private strongItems: EntryResult[];
+    private itemsStrong: EntryResult[];
     public get items(): EntryResult[] {
-        if (this.strongItems === undefined) {
+        if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
-            this.strongItems = [];
+            this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.strongItems.push(new EntryResult(clients[i]));
+                this.itemsStrong.push(new EntryResult(clients[i]));
             }
         }
-        return this.strongItems;
+        return this.itemsStrong;
     }
 
     public refresh(): Promise<EntryCollectionResult> {
@@ -712,20 +713,19 @@ export class EntryCollectionResult {
 }
 
 export class EntryPointInjector {
-    private url: string;
-    private fetcher: hal.Fetcher;
     private instancePromise: Promise<EntryPointResult>;
 
-    constructor(url: string, fetcher: hal.Fetcher) {
-        this.url = url;
-        this.fetcher = fetcher;
-    }
+    constructor(private url: string, private fetcher: Fetcher, private data?: any) {}
 
     public load(): Promise<EntryPointResult> {
         if (!this.instancePromise) {
-            this.instancePromise = EntryPointResult.Load(this.url, this.fetcher);
+            if (this.data) {
+                this.instancePromise = Promise.resolve(new EntryPointResult(new hal.HalEndpointClient(this.data, this.fetcher)));
+            }
+            else {
+                this.instancePromise = EntryPointResult.Load(this.url, this.fetcher);
+            }
         }
-
         return this.instancePromise;
     }
 }
@@ -733,7 +733,7 @@ export class EntryPointInjector {
 export class EntryPointResult {
     private client: hal.HalEndpointClient;
 
-    public static Load(url: string, fetcher: hal.Fetcher): Promise<EntryPointResult> {
+    public static Load(url: string, fetcher: Fetcher): Promise<EntryPointResult> {
         return hal.HalEndpointClient.Load({
             href: url,
             method: "GET"
@@ -1010,17 +1010,17 @@ export class UserCollectionResult {
         return this.strongData;
     }
 
-    private strongItems: RoleAssignmentsResult[];
+    private itemsStrong: RoleAssignmentsResult[];
     public get items(): RoleAssignmentsResult[] {
-        if (this.strongItems === undefined) {
+        if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
-            this.strongItems = [];
+            this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.strongItems.push(new RoleAssignmentsResult(clients[i]));
+                this.itemsStrong.push(new RoleAssignmentsResult(clients[i]));
             }
         }
-        return this.strongItems;
+        return this.itemsStrong;
     }
 
     public refresh(): Promise<UserCollectionResult> {
@@ -1273,17 +1273,17 @@ export class UserSearchCollectionResult {
         return this.strongData;
     }
 
-    private strongItems: UserSearchResult[];
+    private itemsStrong: UserSearchResult[];
     public get items(): UserSearchResult[] {
-        if (this.strongItems === undefined) {
+        if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
-            this.strongItems = [];
+            this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.strongItems.push(new UserSearchResult(clients[i]));
+                this.itemsStrong.push(new UserSearchResult(clients[i]));
             }
         }
-        return this.strongItems;
+        return this.itemsStrong;
     }
 
     public refresh(): Promise<UserSearchCollectionResult> {
@@ -1445,7 +1445,7 @@ export class UserSearchCollectionResult {
 }
 //----------------------
 // <auto-generated>
-//     Generated using the NSwag toolchain v9.10.49.0 (Newtonsoft.Json v11.0.0.0) (http://NJsonSchema.org)
+//     Generated using the NSwag toolchain v1.0.0.0 (Newtonsoft.Json v12.0.0.0) (http://NJsonSchema.org)
 // </auto-generated>
 //----------------------
 
@@ -1465,30 +1465,28 @@ export interface RoleAssignments {
 export interface Category {
     categoryId?: string;
     name?: string;
+    total?: number;
     created?: string;
     modified?: string;
 }
 
 export interface CategoryInput {
-    name: string;
+    name?: string;
+    total?: number;
 }
 
 export interface CategoryCollection {
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
     /** Lookup a category by id. */
     categoryId?: string;
     total?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 
 export interface CategoryQuery {
     /** Lookup a category by id. */
     categoryId?: string;
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 
@@ -1502,9 +1500,9 @@ export interface Entry {
 }
 
 export interface EntryInput {
-    description: string;
-    total: number;
-    categoryId: string;
+    description?: string;
+    total?: number;
+    categoryId?: string;
 }
 
 export interface EntryCollection {
@@ -1513,9 +1511,7 @@ export interface EntryCollection {
     /** Lookup a entry by id. */
     entryId?: string;
     total?: number;
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 
@@ -1523,9 +1519,7 @@ export interface EntryQuery {
     /** Lookup a entry by id. */
     entryId?: string;
     categoryId?: string;
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 
@@ -1533,28 +1527,28 @@ export interface EntryPoint {
 }
 
 export interface RolesQuery {
-    /** The guid for the user, this is used to look up the user. */
     userId?: string[];
-    /** A name for the user. Used only as a reference, will be added to the result if the user is not found. */
     name?: string;
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
+    editRoles?: boolean;
+    superAdmin?: boolean;
     offset?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 
 export interface UserCollection {
+    name?: string;
+    userId?: string[];
+    total?: number;
+    editRoles?: boolean;
+    superAdmin?: boolean;
     offset?: number;
     limit?: number;
-    total?: number;
 }
 
 export interface UserSearchQuery {
     userId?: string;
     userName?: string;
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 
@@ -1562,9 +1556,7 @@ export interface UserSearchCollection {
     userName?: string;
     userId?: string;
     total?: number;
-    /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
-    /** The limit of the number of items to return. */
     limit?: number;
 }
 

@@ -9,9 +9,9 @@ namespace Budget.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult Categories()
+        public Task<IActionResult> Categories()
         {
-            return View();
+            return CacheUiView();
         }
     }
 }

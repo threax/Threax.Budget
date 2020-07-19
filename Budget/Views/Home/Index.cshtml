@@ -2,13 +2,6 @@
     ViewData["Title"] = "Entries";
 }
 
-@section BeforeMenu{ 
-    <form class="form-inline my-2 my-lg-0" data-hr-controller="search" data-hr-form="input">
-        <p class="bg-danger hiddenToggler" data-hr-toggle="mainError" data-hr-view="mainError" data-hr-style-on="display:block;">{{message}}</p>
-        <select id="hr-form-prop-4" class="form-control" name="categoryId" data-hr-form-level="" data-hr-on-change="submit"></select>
-    </form>
-}
-
 <div class="row">
     <div data-hr-controller="mainTable" class="col-lg-12">
         <load visible="true">
