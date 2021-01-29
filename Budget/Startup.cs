@@ -68,8 +68,6 @@ namespace Budget
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Threax.AspNetCore.Docker.Certs.CertManager.LoadTrustedRoots(o => Configuration.Bind("CertManager", o));
-
             //Add the client side configuration object
             services.AddClientConfig(clientConfig, o =>
             {

@@ -39,7 +39,6 @@
     <PackageReference Include="Threax.AspNetCore.Halcyon.Ext" Version="14.4.1" />
     <PackageReference Include="Threax.AspNetCore.Halcyon.ClientGen" Version="12.3.2" />
     <PackageReference Include="Threax.Extensions.Configuration.SchemaBinder" Version="2.0.1" />
-    <PackageReference Include="Threax.AspNetCore.Docker.Certs" Version="2.0.0" />
     <PackageReference Include="HtmlRapier.TagHelpers" Version="8.2.1" />
     <PackageReference Include="Threax.ReflectedServices" Version="1.0.1" />
     <PackageReference Include="Threax.Sqlite.Ext" Version="2.0.1" />
