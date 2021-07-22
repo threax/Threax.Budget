@@ -1,11 +1,11 @@
-import * as standardCrudPage from 'hr.widgets.StandardCrudPage';
-import * as startup from 'clientlibs.startup';
-import * as deepLink from 'hr.deeplink';
-import { EntryCrudInjector } from 'clientlibs.EntryCrudInjector';
+import * as standardCrudPage from 'htmlrapier.widgets/src/StandardCrudPage';
+import * as startup from 'Client/Libs/startup';
+import * as deepLink from 'htmlrapier/src/deeplink';
+import { EntryCrudInjector } from 'Client/Libs/EntryCrudInjector';
 
-import { CrudTableControllerExtensions } from 'hr.widgets.CrudTableController';
-import * as client from 'clientlibs.ServiceClient';
-import * as controller from 'hr.controller';
+import { CrudTableControllerExtensions } from 'htmlrapier.widgets/src/CrudTableController';
+import * as client from 'Client/Libs/ServiceClient';
+import * as controller from 'htmlrapier/src/controller';
 
 class BudgetTableExtensions extends CrudTableControllerExtensions {
     private totalView: controller.IView<client.EntryCollection>;
